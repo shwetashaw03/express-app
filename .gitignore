@@ -1,0 +1,5 @@
+node_modules
+*.sh
+*/*/style.css
+data/*/*.csv
+data/*/*.md

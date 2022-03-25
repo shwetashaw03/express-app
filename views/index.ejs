@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+
+        <!--Test CDN-->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- Setup -->
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- Check & Apply theme on load -->
+        <script type="text/javascript">
+            function checkTheme() {
+                let theme = localStorage.theme ?? 'light'
+                if(theme != 'dark' && theme != 'light'){
+                    theme = 'light'
+                }
+                let inv_theme = (theme === 'dark')? 'light': 'dark'
+                
+                const root = window.document.documentElement
+                root.classList.remove(inv_theme)
+                root.classList.add(theme)
+
+                console.log(theme+" "+inv_theme)
+            }
+            window.onload = checkTheme;
+        </script>
+
+    </head>
+
+    <body class="bg-emerald-200 dark:bg-emerald-700">
+        <div class="m-8 ">
+            <buttton onclick='changeTheme()' class="cursor-pointer px-4 py-2 rounded-full bg-emerald-400 hover:bg-emerald-500 focus:outline-none focus:ring focus:ring-emerald-300">
+                Save changes
+            </button>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-lg px-6 py-8 ring-1 ring-slate-900/5 shadow-xl">
+            <div>
+              <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
+                <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><!-- ... --></svg>
+              </span>
+            </div>
+            <h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">Writes Upside-Down</h3>
+            <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">
+              The Zero Gravity Pen can be used to write in any orientation, including upside-down. It even works in outer space.
+            </p>
+          </div>
+
+
+        <script type="text/javascript" >
+            function changeTheme(){
+                let theme = localStorage.theme
+                const root = window.document.documentElement
+                if(theme == 'light'){
+                    localStorage.theme = 'dark'
+                    root.classList.remove('light')
+                    root.classList.add('dark')
+                }else{
+                    localStorage.theme = 'light'
+                    root.classList.remove('dark')
+                    root.classList.add('light')
+                }
+            }
+        </script>
+    </body>
+
+</html>
